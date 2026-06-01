@@ -4,11 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nadirah Andrews Portfolio</title>
-    <link rel="stylesheet" href="./styles.css">
-    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="/app.js" defer></script>
 </head>
 <body>
-    <h1>Nadirah Andrews Portfolio</h1>
+
+    <!-- HERO SECTION -->
+    <section class="-home-hero" id="hero">
+
+    <!-- Placeholder for hero background image -->
+        <div class="hero-bg-placeholder" aria-hidden="true"></div>
+        <img src="/images/hero.jpg" alt="Hero image" class="hero-image">
+
+
+        <div class="hero-strip">
+            <span class="strip-item">01 &mdash; Game Design</span>
+            <span class="strip-item">02 &mdash; Animation</span>
+            <span class="strip-item">03 &mdash; Front and Backend Development</span>
+            <span class="strip-item">04 &mdash; Conceptual Art</span>
+    </div>
+
+    <!-- Hero Text -->
+    <div class="hero-text">
+      <h1 class="hero-title">
+        DEAR<br>CREATIVE<br><span class="hero-tagline">(Tagline)</span>
+      </h1>
+    </div>
+     
+
+    </section>
+
+    <!-- FEATURES LIST -->
+    <section class="feature-section" id="features">
+        <div class="feature-header">
+            <h2 class="feature-title">Featured Work</h2>
+            <p class="feature-intro">A brief introduction to my craft.</p>
+        </div>
+
+        <!--Carousel Track-->
+        <div class="carousel-wrapper" id="carousel"></div>
+            <div class="carousel-track" id="carouselTrack">
+
+                <!--Card 1-->
+                <article class="feature-card">
+                    <img src="/images/feature1.jpg" alt="Screenshot of a game design project" class="feature-image">
+                    <div class="card-overlay">
+                        <p class="card-skill">'Building 3D games'</p>
+                        <h3 class="card-title">Game Design</h3>
+                        <a href="/pages/digitalworks.html" class="card-btn">View Projects</a>
+                    </div>
+                </article>
+                <!--Card 2-->
+                <article class="feature-card">
+                    <img src="/images/feature2.jpg" alt="Animation project showcasing character movement" class="feature-image">
+                    <div class="card-overlay">
+                        <p class="card-skill" >'Animating characters'</p>
+                        <h3 class="card-title">Animation</h3>
+                        <a href="/pages/digitalworks.html" class="card-btn">View Projects</a>
+                    </div>                                                                                      
+                </article>
+                <!--Card 3-->
+                <article class="feature-card">
+                    <img src="/images/feature3.jpg" alt="Traditional art project" class="feature-image">
+                    <div class="card-overlay">
+                        <p class="card-skill">'Building conceptual art'</p>
+                        <h3 class="card-title">Traditional Art</h3>
+                        <a href="/pages/tradtionalworks.html" class="card-btn">View Projects</a>
+                    </div>
+                </article>
+
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control prev" aria-label="Previous Feature">&lt;</button>
+            <button class="carousel-control next" aria-label="Next Feature">&gt;</button>
     
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2026 Nadirah Andrews. All rights reserved.</p>
+        <p> nadirah.andrews@gmail.com</p>
+    </footer>
 </body>
 </html>
