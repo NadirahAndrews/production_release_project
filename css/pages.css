@@ -1,0 +1,595 @@
+/* =============================================
+   css/pages.css — Inner page styles
+   Visual Lab, Projects, Project Works, About, Contact
+   Breakpoints:
+     Desktop  : 1100px+   (default)
+     Tablet   : 768–1099px
+     Mobile   : below 768px
+     Sm mobile: below 480px
+   ============================================= */
+ 
+ 
+/*ABOUT PAGE*/
+ 
+.about-page-header {
+  padding: 7rem 0 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.about-title {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+ 
+.about-header-intro {
+  max-width: 560px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+ 
+.about-bio {
+  padding: 5rem 0;
+}
+ 
+.about-bio p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+ 
+.about-timeline {
+  padding: 4rem 0 5rem;
+  border-top: 1px solid var(--border);
+}
+ 
+ 
+/* CONTACT PAGE */
+ 
+.contact-page-header {
+  padding: 7rem 0 3.5rem;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.contact-title {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+ 
+.contact-header-intro {
+  max-width: 540px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+ 
+.contact-section { padding: 5rem 0; }
+ 
+.contact-details { margin-top: 2.5rem; }
+ 
+ 
+/* VISUAL LAB PAGE */
+ 
+/* Header: obscured until hovered — CSS-only, no JS */
+.vl-header {
+  padding: 7rem 0 3.5rem;
+  border-bottom: 1px solid var(--border);
+  opacity: 0.2;
+  filter: blur(3px);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+  cursor: default;
+}
+.vl-header:hover {
+  opacity: 1;
+  filter: none;
+}
+ 
+.vl-title {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+ 
+.vl-intro {
+  max-width: 580px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+ 
+/* Masonry gallery */
+.vl-gallery {
+  padding: 3rem 2.5rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+.vl-masonry {
+  columns: 3;
+  column-gap: 1rem;
+}
+ 
+/* Gallery items: dim by default, brighten + reveal info on hover */
+.vl-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.4;
+  transform: scale(0.97);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.vl-item:hover {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+ 
+.vl-img-placeholder {
+  width: 100%;
+  display: block;
+  background: linear-gradient(160deg,
+    #2a1f14 0%, #3d2a18 40%, #1e1510 70%, #0e0a06 100%);
+}
+ 
+/* Medium + date: slides up on hover */
+.vl-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10, 7, 4, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.vl-item:hover .vl-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+.vl-medium,
+.vl-date {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+ 
+ 
+/*PROJECTS PAGE*/
+ 
+.proj-layout {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 7rem 3rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+.proj-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+ 
+.proj-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 380px;
+}
+ 
+/* Stacked cards */
+.proj-cards-stack {
+  position: relative;
+  height: 540px;
+}
+ 
+.proj-type-card {
+  position: absolute;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+ 
+/* Front card: raised, shifted right-down */
+.proj-card-front {
+  z-index: 2;
+  transform: translate(12%, 5%);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+ 
+/* Back card: behind, shifted to original position */
+.proj-card-back {
+  z-index: 1;
+  transform: translate(0%, 0%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+ 
+.proj-card-bg {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+ 
+.proj-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg,
+    #2a1f14 0%, #3d2a18 40%, #1e1510 70%, #0e0a06 100%);
+}
+ 
+.proj-thumb-traditional {
+  background: linear-gradient(160deg,
+    #2a1814 0%, #3d1e18 40%, #1e1210 70%, #0e0806 100%);
+}
+ 
+.proj-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 1.4rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+}
+ 
+.proj-type-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(240, 232, 222, 0.9);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+ 
+.proj-card-body { padding: 1.2rem 1.4rem 1.5rem; }
+ 
+.proj-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+ 
+.proj-tag {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+}
+ 
+.proj-overview {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+ 
+.proj-view-link {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+.proj-type-card:hover .proj-view-link { color: var(--accent); }
+ 
+ 
+/*PROJECT WORKS PAGES*/
+ 
+/* Nav greyed out + non-interactive */
+.pw-page nav {
+  pointer-events: none;
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+ 
+/* Page header */
+.pw-header {
+  padding: 6rem 3rem 3rem;
+  border-bottom: 1px solid var(--border);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+.pw-header-alt {
+  text-align: center;
+  padding-top: 5rem;
+}
+ 
+.pw-main-title {
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+ 
+.pw-sub-title {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+ 
+.pw-overview {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.75;
+  margin: 0;
+}
+ 
+.pw-header-alt .pw-overview { margin: 0 auto; text-align: center; }
+ 
+/* Side-scroll section */
+.pw-scroll-section {
+  position: relative;
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+}
+ 
+.pw-scroll-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  padding-bottom: 0.5rem;
+}
+.pw-scroll-track::-webkit-scrollbar       { height: 3px; }
+.pw-scroll-track::-webkit-scrollbar-track { background: transparent; }
+.pw-scroll-track::-webkit-scrollbar-thumb { background: var(--bg-subtle); }
+ 
+/* Digital work panel: image left, text right */
+.pw-work-item {
+  flex: 0 0 78vw;
+  max-width: 960px;
+  scroll-snap-align: start;
+  display: flex;
+  border-right: 1px solid var(--border);
+}
+ 
+.pw-item-digital { flex-direction: row; }
+ 
+.pw-work-media {
+  flex: 0 0 55%;
+  position: relative;
+  min-height: 360px;
+  overflow: hidden;
+}
+ 
+.pw-media-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  background: linear-gradient(160deg,
+    #2a1f14 0%, #3d2a18 40%, #1e1510 70%, #0e0a06 100%);
+}
+ 
+/* Video fills media area same as image */
+.pw-media-video {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  display: block;
+}
+ 
+.pw-work-desc {
+  flex: 1;
+  padding: 2.5rem 2.5rem 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg-surface);
+}
+ 
+.pw-section-heading {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  color: var(--text-primary);
+}
+ 
+.pw-work-desc p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+ 
+/* Traditional work panel: full-bleed image, text overlay left */
+.pw-item-traditional { flex-direction: column; }
+ 
+.pw-media-full {
+  flex: unset;
+  width: 100%;
+  height: 440px;
+  position: relative;
+  overflow: hidden;
+}
+.pw-media-full .pw-media-placeholder { min-height: 440px; }
+ 
+.pw-trad-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 42%;
+  height: 100%;
+  background: rgba(26, 20, 14, 0.88);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pw-trad-overlay p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+ 
+/* Scroll hint */
+.pw-scroll-hint {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.8rem 0 0;
+}
+ 
+/* Back bar */
+.pw-back-bar {
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+ 
+.pw-back-btn {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.pw-back-btn:hover { color: var(--accent); }
+ 
+ 
+/*RESPONSIVE DESIGN — TABLET  (768px – 1099px) */
+@media (max-width: 1099px) {
+ 
+  /* About / Contact headers */
+  .about-page-header,
+  .contact-page-header { padding: 6rem 0 3rem; }
+ 
+  /* Visual Lab */
+  .vl-gallery  { padding: 2.5rem 2rem 4rem; }
+  .vl-masonry  { columns: 3; column-gap: 0.8rem; }
+ 
+  /* Projects: slightly less gap */
+  .proj-layout {
+    gap: 2.5rem;
+    padding: 6rem 2rem 4rem;
+  }
+  .proj-cards-stack { height: 500px; }
+ 
+  /* Project works panels: slightly wider */
+  .pw-work-item { flex: 0 0 85vw; }
+  .pw-header    { padding: 5.5rem 2rem 2.5rem; }
+  .pw-back-bar  { padding: 1.5rem 2rem; }
+}
+ 
+ 
+/*RESPONSIVE DESIGN — MOBILE  (below 768px) */
+@media (max-width: 767px) {
+ 
+  /* About / Contact */
+  .about-page-header,
+  .contact-page-header { padding: 5rem 0 2.5rem; }
+  .about-bio           { padding: 3rem 0; }
+  .about-timeline      { padding: 3rem 0 4rem; }
+  .contact-section     { padding: 3rem 0; }
+ 
+  /* Visual Lab: 2 columns */
+  .vl-gallery  { padding: 2rem 1.5rem 3rem; }
+  .vl-masonry  { columns: 2; column-gap: 0.7rem; }
+ 
+  /* On mobile, hover doesn't exist — show info always */
+  .vl-item     { opacity: 0.85; transform: scale(1); }
+  .vl-info     { opacity: 1; transform: translateY(0); }
+ 
+  /* Projects: stack header above cards */
+  .proj-layout {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    padding: 5rem 1.5rem 3rem;
+    gap: 2rem;
+  }
+  .proj-intro        { max-width: 100%; }
+  .proj-cards-stack  { height: 460px; }
+  .proj-type-card    { width: 92%; }
+  .proj-card-front   { transform: translate(8%, 4%); }
+ 
+  /* Project works: panels nearly full width, stack digital vertically */
+  .pw-work-item      { flex: 0 0 92vw; }
+  .pw-item-digital   { flex-direction: column; }
+  .pw-work-media     { flex: 0 0 auto; min-height: 220px; }
+  .pw-media-placeholder { min-height: 220px; }
+  .pw-media-video    { min-height: 220px; }
+  .pw-work-desc      { padding: 1.5rem; }
+ 
+  /* Traditional: widen text overlay */
+  .pw-media-full     { height: 360px; }
+  .pw-media-full .pw-media-placeholder { min-height: 360px; }
+  .pw-trad-overlay   { width: 60%; }
+ 
+  .pw-header     { padding: 5rem 1.5rem 2rem; }
+  .pw-back-bar   { padding: 1.2rem 1.5rem; }
+}
+ 
+ 
+/* RESPONSIVE — SMALL MOBILE  (below 480px) */
+@media (max-width: 479px) {
+ 
+  /* Visual Lab: single column */
+  .vl-masonry { columns: 1; }
+ 
+  /* Projects cards: even closer together */
+  .proj-cards-stack { height: 420px; }
+  .proj-type-card   { width: 96%; }
+  .proj-card-front  { transform: translate(4%, 3%); }
+  .proj-card-bg     { height: 180px; }
+ 
+  /* Project works: full-width panels */
+  .pw-work-item    { flex: 0 0 96vw; }
+ 
+  /* Traditional overlay becomes bottom strip instead of side panel */
+  .pw-trad-overlay {
+    width: 100%;
+    height: auto;
+    top: auto;
+    bottom: 0;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    padding: 1rem 1.2rem;
+  }
+  .pw-media-full { height: 320px; }
+}
