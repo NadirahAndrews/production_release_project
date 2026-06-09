@@ -548,9 +548,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* =============================================
-   RESPONSIVE BREAKPOINTS
-   ============================================= */
+/* RESPONSIVE BREAKPOINTS */
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {
