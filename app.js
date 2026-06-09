@@ -1,3 +1,6 @@
+//1.NAVIGATION
+
+
 const initNavInjection = () => {
     const container = document.getElementById("main-nav-container");
     if (!container) return;
@@ -87,3 +90,74 @@ if (document.readyState === 'loading') {
     initStickyNav();
 }
 
+//2. MASONRY GALLERY
+// Visual Lab - Masonry Gallery with Lightbox
+document.addEventListener('DOMContentLoaded', function() {
+    initVisualLab();
+});
+
+function initVisualLab() {
+    // Add lightbox to gallery items
+    const galleryItems = document.querySelectorAll('.vl-item');
+    
+    if (galleryItems.length === 0) return;
+    
+    // Create lightbox modal
+    const lightbox = document.createElement('div');
+    lightbox.className = 'vl-lightbox';
+    lightbox.innerHTML = `
+        <span class="vl-lightbox-close">&times;</span>
+        <img class="vl-lightbox-img" src="" alt="">
+        <div class="vl-lightbox-caption"></div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    const lightboxImg = lightbox.querySelector('.vl-lightbox-img');
+    const lightboxCaption = lightbox.querySelector('.vl-lightbox-caption');
+    const closeBtn = lightbox.querySelector('.vl-lightbox-close');
+    
+    // Add click event to each gallery item
+    galleryItems.forEach(item => {
+        const img = item.querySelector('img');
+        const medium = item.querySelector('.vl-medium');
+        const date = item.querySelector('.vl-date');
+        
+        if (img) {
+            item.addEventListener('click', function(e) {
+                // Don't trigger if clicking on info overlay
+                if (e.target.closest('.vl-info')) return;
+                
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                
+                if (medium && date) {
+                    lightboxCaption.textContent = `${medium.textContent} — ${date.textContent}`;
+                } else if (medium) {
+                    lightboxCaption.textContent = medium.textContent;
+                } else {
+                    lightboxCaption.textContent = img.alt || 'Artwork';
+                }
+                
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    });
+    
+    // Close lightbox on click
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox || e.target === closeBtn) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+}
