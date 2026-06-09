@@ -161,3 +161,44 @@ function initVisualLab() {
     });
     
 }
+
+//3. PROJECTS PAGE
+document.addEventListener('DOMContentLoaded', function() {
+    // Add placeholder backgrounds if images don't exist
+    const cards = document.querySelectorAll('.proj-type-card');
+    
+    cards.forEach(card => {
+        const img = card.querySelector('.proj-thumb');
+        const wrapper = card.querySelector('.proj-image-wrapper');
+        
+        if (img) {
+            // Check if image loads successfully
+            img.addEventListener('error', function() {
+                // Add colored background as fallback
+                const isDigital = card.id === 'cardDigital';
+                wrapper.style.background = isDigital 
+                    ? 'linear-gradient(135deg, #2a1f14 0%, #1a1410 100%)'
+                    : 'linear-gradient(135deg, #3a2a1a 0%, #1a1410 100%)';
+                
+                // Add a placeholder icon/text
+                const overlay = card.querySelector('.proj-card-overlay');
+                if (overlay && !card.querySelector('.placeholder-text')) {
+                    const placeholder = document.createElement('div');
+                    placeholder.className = 'placeholder-text';
+                    placeholder.style.cssText = `
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-family: var(--serif);
+                        font-size: 3rem;
+                        color: rgba(240,232,222,0.1);
+                        pointer-events: none;
+                    `;
+                    placeholder.innerHTML = '🎨';
+                    wrapper.appendChild(placeholder);
+                }
+            });
+        }
+    });
+});

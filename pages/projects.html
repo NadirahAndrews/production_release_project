@@ -5,63 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Nadirah Andrews Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
     <script src="../app.js" defer></script>
-    
 </head>
 <body>
-  <div id="main-nav-container"></div>
-<!--HEADER-->
-<div class="proj-header">
-      <h1 class="proj-title">Projects</h1>
-      <p class="proj-intro">
-        the projects I've covered so far span over my highschool and university years, and include a range of creative pursuits in game design and development to digital art and traditional mediums. These projects represent my growth as a creative and my exploration of different mediums and techniques. Each project has been a learning experience that has helped me develop my skills and refine my artistic vision.
-      </p>
-</div>
-
-<!--PROJECT CARDS-->
-<div class="proj-cards-stack">
-
-  <!-- PROJECT CARD 1 -->
-   <a href="digitalworks.html" class="proj-type-card proj-card-front" id="cardDigital">
-        <div class="proj-card-bg">
-          <div class="proj-thumb-placeholder"></div>
-          <div class="proj-card-overlay">
-            <h2 class="proj-type-heading">Digital<br>Works</h2>
-          </div>
-        </div>
-        <div class="proj-card-body">
-          <div class="proj-tags">
-            <span class="proj-tag">Game Design</span>
-            <span class="proj-tag">Animation</span>
-          </div>
-          <p class="proj-overview">
-            My digital projects are consistent of my studies in game design and animation this far, and include a range of projects from 2D and 3D game assets to animation.
-          </p>
-          <span class="proj-view-link">view &#8594;</span>
-        </div>
-      </a>
-  <!-- PROJECT CARD 2 -->
-   <a href="traditionalworks.html" class="proj-type-card proj-card-front" id="cardTraditional">
-        <div class="proj-card-bg">
-          <div class="proj-thumb-placeholder"></div>
-          <div class="proj-card-overlay">
-            <h2 class="proj-type-heading">Traditional<br>Works</h2>
-          </div>
-        </div>
-        <div class="proj-card-body">
-          <div class="proj-tags">
-            <span class="proj-tag">Paintings</span>
-            <span class="proj-tag">Sculptures</span>
-          </div>
-          <p class="proj-overview">
-            My traditional works are consistent of conceptual and experimental pieces in a range of mediums.
-          </p>
-          <span class="proj-view-link">view &#8594;</span>
-        </div>
-      </a>
-  
-
-
+    <div id="main-nav-container"></div>
     
+    <div class="projects-wrapper">
+        <!-- HEADER SECTION - LEFT SIDE -->
+        <div class="proj-header">
+            <h1 class="proj-title">Projects</h1>
+            <p class="proj-intro">
+                The projects I've covered so far span over my highschool and university years, and include a range of creative pursuits in game design and development to digital art and traditional mediums. These projects represent my growth as a creative and my exploration of different mediums and techniques. Each project has been a learning experience that has helped me develop my skills and refine my artistic vision.
+            </p>
+        </div>
+
+        <!-- CARDS STACK SECTION - RIGHT SIDE -->
+        <div class="proj-cards-stack">
+            <!-- PROJECT CARD 1 - DIGITAL WORKS (TOP CARD) -->
+            <a href="digitalworks.html" class="proj-type-card" id="cardDigital">
+                <div class="proj-card-inner">
+                    <div class="proj-image-wrapper">
+                        <img src="../media/images/digitalworks-thumbnail.png" alt="Digital Works" class="proj-thumb">
+                        <div class="proj-card-overlay">
+                            <h2 class="proj-type-heading">Digital<br>Works</h2>
+                        </div>
+                    </div>
+                    <div class="proj-card-body">
+                        <div class="proj-tags">
+                            <span class="proj-tag">Game Design</span>
+                            <span class="proj-tag">Animation</span>
+                        </div>
+                        <p class="proj-overview">
+                            My digital projects consist of my studies in game design and animation thus far, and include a range of projects from 2D and 3D game assets to animation.
+                        </p>
+                        <span class="proj-view-link">view →</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROJECT CARD 2 - TRADITIONAL WORKS (BEHIND CARD) -->
+            <a href="traditionalworks.html" class="proj-type-card" id="cardTraditional">
+                <div class="proj-card-inner">
+                    <div class="proj-image-wrapper">
+                        <img src="../media/images/traditionalworks-thumbnail.JPG" alt="Traditional Works" class="proj-thumb">
+                        <div class="proj-card-overlay">
+                            <h2 class="proj-type-heading">Traditional<br>Works</h2>
+                        </div>
+                    </div>
+                    <div class="proj-card-body">
+                        <div class="proj-tags">
+                            <span class="proj-tag">Paintings</span>
+                            <span class="proj-tag">Conceptual Development</span>
+                        </div>
+                        <p class="proj-overview">
+                            My traditional works consist of conceptual and experimental pieces in a range of mediums including painting, drawing, and sculpture.
+                        </p>
+                        <span class="proj-view-link">view →</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

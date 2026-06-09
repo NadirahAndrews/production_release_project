@@ -350,141 +350,306 @@
  
  
 /*PROJECTS PAGE*/
- 
-.proj-layout {
-  min-height: calc(100vh - 80px);
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  align-items: center;
-  gap: 4rem;
-  padding: 7rem 3rem 5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+
+/* Main container for side-by-side layout */
+.projects-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
 }
- 
+
+/* Header Section - Left side */
+.proj-header {
+    flex: 1;
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .proj-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
 }
- 
+
 .proj-intro {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  max-width: 380px;
+    font-family: var(--sans);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
 }
- 
-/* Stacked cards */
+
+/* Cards Container - Right side - Horizontal layout */
 .proj-cards-stack {
-  position: relative;
-  height: 540px;
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-height: 600px;
 }
- 
+
+/* Base Card Styles - IDENTICAL for both */
 .proj-type-card {
-  position: absolute;
-  width: 85%;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  background: var(--bg-surface);
-  text-decoration: none;
-  color: var(--text-primary);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  cursor: pointer;
+    display: block;
+    width: 500px;
+    background: var(--bg-surface);
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
- 
-/* Front card: raised, shifted right-down */
-.proj-card-front {
-  z-index: 2;
-  transform: translate(12%, 5%);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+
+/* First card - Right side, slightly lower */
+#cardDigital {
+    position: relative;
+    z-index: 3;
+    margin-top: 60px;
+    margin-right: -40px;
 }
- 
-/* Back card: behind, shifted to original position */
-.proj-card-back {
-  z-index: 1;
-  transform: translate(0%, 0%);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+
+/* Second card - Left side, slightly higher (overlaps the first card) */
+#cardTraditional {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    filter: blur(2px);
+    transition: all 0.4s ease;
 }
- 
-.proj-card-bg {
-  position: relative;
-  width: 100%;
-  height: 240px;
-  overflow: hidden;
+
+/* Card Inner - ensures identical structure */
+.proj-card-inner {
+    width: 100%;
 }
- 
-.proj-thumb-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(160deg,
-    #2a1f14 0%, #3d2a18 40%, #1e1510 70%, #0e0a06 100%);
+
+/* Image Wrapper - identical for both */
+.proj-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: var(--bg-deep);
 }
- 
-.proj-thumb-traditional {
-  background: linear-gradient(160deg,
-    #2a1814 0%, #3d1e18 40%, #1e1210 70%, #0e0806 100%);
+
+/* Thumbnail Images */
+.proj-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
 }
- 
+
+.proj-type-card:hover .proj-thumb {
+    transform: scale(1.05);
+}
+
+/* Card Overlay with Title */
 .proj-card-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  padding: 1rem 1.4rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%);
+    padding: 1.5rem;
 }
- 
+
 .proj-type-heading {
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 700;
-  font-style: italic;
-  color: rgba(240, 232, 222, 0.9);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
 }
- 
-.proj-card-body { padding: 1.2rem 1.4rem 1.5rem; }
- 
+
+/* Card Body */
+.proj-card-body {
+    padding: 1.2rem;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+}
+
+/* Tags */
 .proj-tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
 }
- 
+
 .proj-tag {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  padding: 0.2rem 0.6rem;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(212, 146, 74, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
 }
- 
+
+/* Overview Text */
 .proj-overview {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 0.9rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem;
 }
- 
+
+/* View Link */
 .proj-view-link {
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  transition: color 0.2s;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
 }
-.proj-type-card:hover .proj-view-link { color: var(--accent); }
- 
+
+.proj-type-card:hover .proj-view-link {
+    gap: 0.8rem;
+}
+
+/* Hover effects */
+#cardDigital:hover {
+    transform: translateY(-8px);
+    z-index: 5;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#cardTraditional:hover {
+    filter: blur(0);
+    transform: translateY(-5px);
+    z-index: 4;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================= */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .projects-wrapper {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+    }
+    
+    .proj-type-card {
+        width: 260px;
+    }
+    
+    .proj-image-wrapper {
+        height: 260px;
+    }
+    
+    #cardDigital {
+        margin-top: 50px;
+        margin-right: -30px;
+    }
+    
+    #cardTraditional {
+        margin-top: 15px;
+        filter: blur(1.5px);
+    }
+}
+
+/* Mobile (below 768px) - Stack vertically */
+@media (max-width: 768px) {
+    .projects-wrapper {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+    
+    .proj-header {
+        position: static;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .proj-intro {
+        max-width: 100%;
+    }
+    
+    .proj-cards-stack {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        min-height: auto;
+    }
+    
+    .proj-type-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    /* Reset positioning on mobile */
+    #cardDigital {
+        margin: 0;
+    }
+    
+    #cardTraditional {
+        margin: 0;
+        filter: blur(0);
+    }
+    
+    .proj-image-wrapper {
+        height: 240px;
+    }
+    
+    .proj-card-body {
+        padding: 1rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .projects-wrapper {
+        padding: 1.5rem 1rem;
+    }
+    
+    .proj-type-card {
+        max-width: 100%;
+    }
+    
+    .proj-image-wrapper {
+        height: 220px;
+    }
+    
+    .proj-card-overlay {
+        padding: 1rem;
+    }
+    
+    .proj-type-heading {
+        font-size: 1.3rem;
+    }
+}
  
 /*PROJECT WORKS PAGES*/
  
