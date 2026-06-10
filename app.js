@@ -90,6 +90,8 @@ if (document.readyState === 'loading') {
     initStickyNav();
 }
 
+
+
 //2. MASONRY GALLERY
 // Visual Lab - Masonry Gallery with Lightbox
 document.addEventListener('DOMContentLoaded', function() {
@@ -403,4 +405,52 @@ function initVideoPlayback() {
             });
         }
     });
+}
+
+// Subtle Dynamic Background
+function initSubtleDynamicBackground() {
+    // Create container
+    const dynamicBg = document.createElement('div');
+    dynamicBg.className = 'dynamic-bg';
+    
+    // Create single subtle orb
+    const orb = document.createElement('div');
+    orb.className = 'gradient-orb orb-1';
+    orb.style.width = '500px';
+    orb.style.height = '500px';
+    orb.style.filter = 'blur(100px)';
+    orb.style.opacity = '0.4';
+    
+    dynamicBg.appendChild(orb);
+    document.body.insertBefore(dynamicBg, document.body.firstChild);
+    
+    // Mouse move with lerp (smooth following)
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    
+    document.addEventListener('mousemove', function(e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+    });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+            targetX = e.touches[0].clientX;
+            targetY = e.touches[0].clientY;
+        }
+    });
+    
+    function smoothFollow() {
+        // Smooth lerp animation
+        currentX += (targetX - currentX) * 0.05;
+        currentY += (targetY - currentY) * 0.05;
+        
+        orb.style.transform = `translate(${currentX - 250}px, ${currentY - 250}px)`;
+        
+        requestAnimationFrame(smoothFollow);
+    }
+    
+    smoothFollow();
 }

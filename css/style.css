@@ -1,15 +1,15 @@
-/* =============================================
+/*
    css/style.css — Global design tokens & shared styles
    Breakpoints:
      Desktop  : 1100px+   (default — desktop-first)
      Tablet   : 768–1099px
      Mobile   : below 768px
      Sm mobile: below 480px
-   ============================================= */
+    */
  
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap');
  
-/* ── DESIGN TOKENS ──────────────────────────────── */
+/*  DESIGN TOKENS  */
 :root {
   /* Primary — dark warm base */
   --bg-deep:      #1a1410;
@@ -46,7 +46,7 @@
   --space-xl: 7rem;
 }
  
-/* ── RESET ──────────────────────────────────────── */
+/*  RESET   */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
 html { scroll-behavior: smooth; font-size: 16px; }
@@ -64,7 +64,7 @@ body {
 img, video { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
  
-/* ── TYPE HIERARCHY ─────────────────────────────── */
+/*  TYPE HIERARCHY   */
  
 h1 {
   font-family: var(--serif);
@@ -102,17 +102,16 @@ p {
   margin-bottom: 1rem;
 }
  
-/* ── LAYOUT ─────────────────────────────────────── */
+/* LAYOUT  */
  
 .container    { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
 .container-sm { max-width: 700px;  margin: 0 auto; padding: 0 2.5rem; }
  
 section { padding: var(--space-lg) 0; }
  
-/* Fixed nav offset */
 .page-top { padding-top: 80px; }
  
-/* ── SECTION LABEL ──────────────────────────────── */
+/*  SECTION LABEL   */
 .section-label {
   font-family: var(--sans);
   font-size: 0.68rem;
@@ -132,7 +131,7 @@ section { padding: var(--space-lg) 0; }
   background: var(--border);
 }
  
-/* ── NAVIGATION ─────────────────────────────────── */
+/*  NAVIGATION  */
  
 #main-nav-container {
   position: relative;
@@ -236,7 +235,24 @@ section { padding: var(--space-lg) 0; }
   color: var(--accent);
 }
 
-/* ── MOBILE RESPONSIVE ─────────────────────────── */
+/* Smooth Transitions*/
+body {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/*  MOBILE RESPONSIVE  */
 @media (max-width: 768px) {
   #main-nav {
     padding: 0.75rem 1.5rem;
@@ -296,7 +312,7 @@ section { padding: var(--space-lg) 0; }
 }
 
  
-/* ── BUTTONS ────────────────────────────────────── */
+/*  BUTTONS   */
  
 .btn {
   display: inline-block;
@@ -333,7 +349,7 @@ section { padding: var(--space-lg) 0; }
   box-shadow: 0 0 14px var(--accent-glow);
 }
  
-/* ── TIMELINE ───────────────────────────────────── */
+/*   TIMELINE  */
  
 .timeline-list {
   list-style: none;
@@ -370,7 +386,7 @@ section { padding: var(--space-lg) 0; }
   margin-bottom: 0.3rem;
 }
  
-/* ── CONTACT ────────────────────────────────────── */
+/* CONTACT */
  
 .contact-row {
   display: flex;
@@ -400,7 +416,7 @@ section { padding: var(--space-lg) 0; }
 .contact-val a { transition: color 0.2s; }
 .contact-val a:hover { color: var(--accent); }
  
-/* ── FOOTER ─────────────────────────────────────── */
+/*  FOOTER */
  
 .home-footer {
   border-top: 1px solid var(--border);
@@ -449,9 +465,7 @@ section { padding: var(--space-lg) 0; }
 .footer-right a:hover { color: var(--accent); }
  
  
-/* ══════════════════════════════════════════════════
-   RESPONSIVE — TABLET  (768px – 1099px)
-   ══════════════════════════════════════════════════ */
+/* RESPONSIVE — TABLET  (768px – 1099px) */
 @media (max-width: 1099px) {
  
   .container    { padding: 0 2rem; }
@@ -465,9 +479,7 @@ section { padding: var(--space-lg) 0; }
 }
  
  
-/* ══════════════════════════════════════════════════
-   RESPONSIVE — MOBILE  (below 768px)
-   ══════════════════════════════════════════════════ */
+/* RESPONSIVE — MOBILE  (below 768px) */
 @media (max-width: 767px) {
  
   /* Nav: collapse to hamburger */
@@ -503,9 +515,7 @@ section { padding: var(--space-lg) 0; }
 }
  
  
-/* ══════════════════════════════════════════════════
-   RESPONSIVE — SMALL MOBILE  (below 480px)
-   ══════════════════════════════════════════════════ */
+/* RESPONSIVE — SMALL MOBILE  (below 480px) */
 @media (max-width: 479px) {
  
   html { font-size: 15px; } /* slight scale-down, stays above 16px equivalent */
@@ -514,4 +524,4 @@ section { padding: var(--space-lg) 0; }
  
   section { padding: 2.5rem 0; }
 }
- 
+
