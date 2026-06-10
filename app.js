@@ -202,3 +202,205 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+//4. PROJECT WORKS PAGES
+// Simple Endless Carousel
+document.addEventListener('DOMContentLoaded', function() {
+    initSimpleEndlessGallery();
+    initVideoPlayback();
+});
+
+function initSimpleEndlessGallery() {
+    const scrollContainer = document.getElementById('scrollContainer');
+    const leftBtn = document.getElementById('scrollLeft');
+    const rightBtn = document.getElementById('scrollRight');
+    
+    if (!scrollContainer) return;
+    
+    // Get original cards
+    const originalCards = Array.from(document.querySelectorAll('.pw-card'));
+    const cardCount = originalCards.length;
+    
+    // Clone all cards and append
+    originalCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        scrollContainer.appendChild(clone);
+    });
+    
+    // Also prepend clones
+    originalCards.slice().reverse().forEach(card => {
+        const clone = card.cloneNode(true);
+        scrollContainer.insertBefore(clone, scrollContainer.firstChild);
+    });
+    
+    // Get all cards including clones
+    const allCards = document.querySelectorAll('.pw-card');
+    const middleIndex = Math.floor(allCards.length / 2);
+    
+    // Set initial scroll to middle
+    function setToMiddle() {
+        const firstCard = allCards[middleIndex];
+        if (firstCard) {
+            firstCard.scrollIntoView({
+                behavior: 'auto',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+    }
+    
+    // Move to next card
+    let isTransitioning = false;
+    
+    function moveNext() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        
+        let currentCenterCard = null;
+        let minDistance = Infinity;
+        
+        allCards.forEach(card => {
+            const cardRect = card.getBoundingClientRect();
+            const distance = Math.abs(centerX - (cardRect.left + cardRect.width / 2));
+            if (distance < minDistance) {
+                minDistance = distance;
+                currentCenterCard = card;
+            }
+        });
+        
+        if (currentCenterCard) {
+            const nextCard = currentCenterCard.nextElementSibling;
+            if (nextCard && nextCard.classList.contains('pw-card')) {
+                nextCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            } else {
+                // Loop to first card
+                allCards[0].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+    
+    function movePrev() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        
+        let currentCenterCard = null;
+        let minDistance = Infinity;
+        
+        allCards.forEach(card => {
+            const cardRect = card.getBoundingClientRect();
+            const distance = Math.abs(centerX - (cardRect.left + cardRect.width / 2));
+            if (distance < minDistance) {
+                minDistance = distance;
+                currentCenterCard = card;
+            }
+        });
+        
+        if (currentCenterCard) {
+            const prevCard = currentCenterCard.previousElementSibling;
+            if (prevCard && prevCard.classList.contains('pw-card')) {
+                prevCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            } else {
+                // Loop to last card
+                allCards[allCards.length - 1].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+    
+    // Arrow buttons
+    if (rightBtn) rightBtn.addEventListener('click', moveNext);
+    if (leftBtn) leftBtn.addEventListener('click', movePrev);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            moveNext();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            movePrev();
+        }
+    });
+    
+    // Card scaling effect
+    function updateCardScales() {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const centerX = containerRect.left + containerRect.width / 2;
+        
+        allCards.forEach(card => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(centerX - cardCenter);
+            const maxDistance = 350;
+            
+            if (distance < maxDistance) {
+                const scale = 1 - (distance / maxDistance) * 0.15;
+                card.style.transform = `scale(${scale})`;
+                card.style.opacity = '1';
+                card.style.filter = 'blur(0px)';
+            } else {
+                card.style.transform = 'scale(0.85)';
+                card.style.opacity = '0.5';
+                card.style.filter = 'blur(1.5px)';
+            }
+        });
+    }
+    
+    scrollContainer.addEventListener('scroll', () => {
+        requestAnimationFrame(updateCardScales);
+    });
+    
+    setToMiddle();
+    setTimeout(updateCardScales, 100);
+    window.addEventListener('resize', () => setTimeout(updateCardScales, 100));
+}
+
+function initVideoPlayback() {
+    const videos = document.querySelectorAll('.pw-video');
+    
+    videos.forEach(video => {
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        
+        const card = video.closest('.pw-card');
+        if (card) {
+            card.addEventListener('mouseenter', () => {
+                video.play().catch(e => console.log('Video play error:', e));
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+        }
+    });
+}

@@ -9,91 +9,87 @@
     <script src="../app.js" defer></script>
 </head>
 <body>
-   
-    <!--HEADER-->
-    <header class="pw-header pw-header-alt">
-    <h1 class="pw-main-title">Traditional Artworks</h1>
-    <h2 class="pw-sub-title">Design and Technical Skill</h2>
-    <p class="pw-overview">
-      Project overview: My traditional artworks are consistent of conceptual and experimental pieces in a range of mediums. These works represent my exploration of different techniques and styles, and my commitment to developing my skills as an artist. Each piece is a reflection of my creative vision and my passion for artistic expression.
-    </p>
-  </header>
-
-    <!--SIDESCROLL PROJECT GALLERY-->
-    <section class="pw-scroll-section">
-        <div class="pw-scroll-track">
-
-            <div class="pw-work-item pw-item-traditional">
-                <div class="pw-work-media pw-media-full">
-                    <div class="pw-media-placeholder"></div>
-                    <div class="pw-trad-overlay">
-                        <h3 class="pw-section-heading">Section Heading</h3>
-                        <p>
-                         Thought process behind the work displayed and a brief description
-                         of what this piece is showing — media, inspiration, technique,
-                         or materials used.
-                        </p>
-                </div>
-            </div>
-
-            <div class="pw-work-item pw-item-traditional">
-                <div class="pw-work-media pw-media-full">
-                    <div class="pw-media-placeholder"></div>
-                    <div class="pw-trad-overlay">
-                        <h3 class="pw-section-heading">Section Heading</h3>
-                        <p>
-                         Thought process behind the work displayed and a brief description
-                         of what this piece is showing — media, inspiration, technique,
-                         or materials used.
-                        </p>
-                </div>
-            </div>
-
-            <div class="pw-work-item pw-item-traditional">
-                <div class="pw-work-media pw-media-full">
-                    <div class="pw-media-placeholder"></div>
-                    <div class="pw-trad-overlay">
-                        <h3 class="pw-section-heading">Section Heading</h3>
-                        <p>
-                         Thought process behind the work displayed and a brief description
-                         of what this piece is showing — media, inspiration, technique,
-                         or materials used.
-                        </p>
-                </div>
-            </div>
-
-            <div class="pw-work-item pw-item-traditional">
-                <div class="pw-work-media pw-media-full">
-                    <div class="pw-media-placeholder"></div>
-                    <div class="pw-trad-overlay">
-                        <h3 class="pw-section-heading">Section Heading</h3>
-                        <p>
-                         Thought process behind the work displayed and a brief description
-                         of what this piece is showing — media, inspiration, technique,
-                         or materials used.
-                        </p>
-                </div>
-            </div>
+    <div id="main-nav-container"></div>
     
+    <header class="pw-header">
+        <h1 class="pw-main-title">Traditional Artworks</h1>
+        <h2 class="pw-sub-title">Artistic Expression and Craft</h2>
+        <p class="pw-overview">
+            My traditional artworks consist of conceptual and experimental pieces in a range of mediums. 
+            These works represent my exploration of different techniques and styles.
+        </p>
+    </header>
+
+    <!-- Gallery with Arrow Buttons -->
+    <div class="pw-gallery-wrapper">
+        <button class="pw-arrow pw-arrow-left" id="scrollLeft">←</button>
+        
+        <div class="pw-gallery-container">
+            <div class="pw-horizontal-scroll" id="scrollContainer">
+                
+                <div class="pw-card">
+                    <div class="pw-card-media">
+                        <img src="../media/images/oil-portrait.jpg" alt="Oil Portrait">
+                        <div class="pw-card-overlay">
+                            <h3>Oil Portrait Series</h3>
+                            <p>Exploring light, shadow, and emotional expression.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pw-card">
+                    <div class="pw-card-media">
+                        <video class="pw-video" muted loop playsinline>
+                            <source src="../media/videos/charcoal-process.mp4" type="video/mp4">
+                        </video>
+                        <div class="pw-card-overlay">
+                            <h3>Charcoal Figure Studies</h3>
+                            <p>Expressive drawings focusing on movement and form.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pw-card">
+                    <div class="pw-card-media">
+                        <img src="../media/images/mixed-media.jpg" alt="Mixed Media">
+                        <div class="pw-card-overlay">
+                            <h3>Mixed Media Collage</h3>
+                            <p>Combining photography, paint, and found objects.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pw-card">
+                    <div class="pw-card-media">
+                        <img src="../media/images/wire-sculpture.jpg" alt="Wire Sculpture">
+                        <div class="pw-card-overlay">
+                            <h3>Wire Sculpture Studies</h3>
+                            <p>Exploring negative space and structural balance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pw-card">
+                    <div class="pw-card-media">
+                        <video class="pw-video" muted loop playsinline>
+                            <source src="../media/videos/watercolor.mp4" type="video/mp4">
+                        </video>
+                        <div class="pw-card-overlay">
+                            <h3>Watercolor Explorations</h3>
+                            <p>Fluid techniques and color studies.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-
-        <div class="pw-scroll-hint" aria-hidden="true">
-            <span>&#8592;</span> scroll to explore <span>&#8594;</span>
-        </div>
-
-        <!--NAV TO PROJECTS-->
-        <div class="pw-back-bar">
-            <a href="projects.html" class="pw-back-btn">&#8592; Back to Projects Page</a>
-        </div>
-    </section>
-
-    
+        
+        <button class="pw-arrow pw-arrow-right" id="scrollRight">→</button>
+    </div>
 
 
-
-    
-
-      
-    
+    <div class="pw-back-bar">
+        <a href="projects.html" class="pw-back-btn">← Back to Projects</a>
+    </div>
 </body>
 </html>
