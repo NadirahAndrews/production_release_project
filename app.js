@@ -6,7 +6,7 @@ const initNavInjection = () => {
     if (!container) return;
 
     const activePage = container.dataset.active || "";
-    const base = container.dataset.base || "";
+    const base = "/production_release_project";
 
     // Get current page path for active detection
     const currentPath = window.location.pathname;
